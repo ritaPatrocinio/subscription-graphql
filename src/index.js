@@ -1,17 +1,42 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import {
+  createClient,
+  Provider,
+  defaultExchanges,
+  subscriptionExchange,
+} from "urql";
+import { CLIENT_URL, auth, APP_ID } from "./utils/auth";
+import { AuthProvider } from "./contexts/AuthContext";
+import { SubscriptionClient } from "onegraph-subscription-client";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const subscriptionClient = new SubscriptionClient(APP_ID, {
+  oneGraphAuth: auth,
+})
+
+const client = createClient({
+  url: CLIENT_URL,
+  fetchOptions: () => {
+    return {
+      headers: {...auth.authHeaders()},
+    }
+  },
+  exchanges: [
+    ...defaultExchanges,
+    subscriptionExchange({
+      forwardSubscription: (operation) => subscriptionClient.request(operation),
+    }),
+  ],
+})
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <AuthProvider auth={auth}>
+      <Provider value={client}>
+        <App />
+      </Provider>
+    </AuthProvider>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
