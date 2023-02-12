@@ -9,11 +9,12 @@ const Comments = ({ comments }) => {
       style={{
         display: "flex",
         flexDirection: "column",
-        width: 400,
+        width: "100%",
         overflow: "hidden",
         overflowY: "scroll",
         maxHeight: 560,
         margin: 0,
+        padding: 0
       }}
     >
       {comments.map((comment) => {

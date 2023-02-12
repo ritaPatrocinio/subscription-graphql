@@ -24,7 +24,7 @@ const Input = ({ onSubmit }) => {
         style={{
           width: "100%",
           position: "absolute",
-          left: 0,
+          left: -15,
           top: 0,
           border: "1px solid #A9A9A9",
           borderRadius: 20,
@@ -37,7 +37,7 @@ const Input = ({ onSubmit }) => {
         type="submit"
         style={{
           position: "absolute",
-          right: -30,
+          right: -15,
           top: 2,
           borderRadius: 100,
           background: "#0B55DB",

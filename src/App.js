@@ -47,7 +47,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div style={{ minWidth: 400 }}>
+        <div className="Width" >
           <Comments></Comments>
           <Input></Input>
         </div>

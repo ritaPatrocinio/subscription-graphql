@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.Width {
+  width: 80%;
+}
+@media screen and (min-width: 680px) {
+  .Width {
+    width: 50%;
+  }
+}
