@@ -46,7 +46,7 @@ const Input = ({ onSubmit }) => {
           padding: 3,
           width: 65,
           fontWeight: 600,
-          fontSize: 16
+          fontSize: 16,
         }}
       >
         Send
@@ -88,10 +88,6 @@ const NewCommentInput = () => {
   const handleSubmit = (body) => {
     executeMutation({ subjectId: "I_kwDOI77I_s5eKPgq", body });
   };
-  console.log(
-    "🚀 ~ file: Input.js:55 ~ NewCommentInput ~ mutationResult",
-    mutationResult
-  );
 
   return <Input onSubmit={handleSubmit}></Input>;
 };

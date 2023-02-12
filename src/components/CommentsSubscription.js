@@ -35,10 +35,10 @@ const CommentsSubscription = () => {
   const commentsHistoryLength = commentsHistory.length;
 
   useEffect(() => {
-    if (commentsHistoryLength !== 0) {
-      setPauseCommentsHistory(true);
+    if(commentsHistoryLength !== 0){
+        setPauseCommentsHistory(true)
     }
-  }, []);
+  }, [commentsHistoryLength])
 
   const [commentSubscriptionResult] = useSubscription(
     {
@@ -49,10 +49,6 @@ const CommentsSubscription = () => {
       },
     },
     handleSubscription
-  );
-  console.log(
-    "🚀 ~ file: CommentsSubscription.js:30 ~ commentsSubscription ~ commentSubscriptionResult",
-    { commentSubscriptionResult }
   );
 
   const commentsWithHistory = [
